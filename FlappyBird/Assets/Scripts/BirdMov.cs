@@ -14,12 +14,14 @@ public class BirdMov : MonoBehaviour
     private void Start()
     {
         Rb2D = this.gameObject.GetComponent<Rigidbody2D>();//Bu oyun objesinin rb ulaþ diyoruz;
+        Rb2D.gravityScale = 0.2f;
     }
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
             //Kuþu Sýçrat
+            Rb2D.gravityScale = 1;
             Rb2D.velocity = Vector2.up * velocity;
         }
     }
