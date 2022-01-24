@@ -57,6 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\BirdMov.cs" />
+    <Compile Include="Assets\Scripts\PipeMov.cs" />
+    <Compile Include="Assets\Scripts\PipesSpawner.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
