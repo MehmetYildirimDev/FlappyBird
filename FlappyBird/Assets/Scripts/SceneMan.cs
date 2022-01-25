@@ -18,4 +18,8 @@ public class SceneMan : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    public void ExitButton()
+    {
+        Application.Quit();
+    }
 }
