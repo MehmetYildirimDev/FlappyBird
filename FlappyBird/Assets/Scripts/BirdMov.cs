@@ -5,12 +5,14 @@ using UnityEngine.UI;
 
 public class BirdMov : MonoBehaviour
 {
+     public AudioClip point, die,jump;
+
     public Button Restart, MainMenu;
     public GameManager ManagerGame;
 
     public bool isdead = false; 
 
-    public float velocity = 0.7f;
+    public float velocity = 1.75f;
     private Rigidbody2D Rb2D;
 
     private void Start()
@@ -25,7 +27,11 @@ public class BirdMov : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             //Kuþu Sýçrat
-            Rb2D.gravityScale = 1;
+            if (Rb2D.gravityScale!=1)
+            {
+                Rb2D.gravityScale = 1;
+            }
+            GetComponent<AudioSource>().PlayOneShot(jump, 1f);
             Rb2D.velocity = Vector2.up * velocity;
         }
     }
@@ -35,6 +41,7 @@ public class BirdMov : MonoBehaviour
         if (collision.gameObject.name.Equals("ScoreArea"))
         {
             ManagerGame.UpdateScore();
+            GetComponent<AudioSource>().PlayOneShot(point, 1f);
         }
     }
 
@@ -43,6 +50,7 @@ public class BirdMov : MonoBehaviour
         if (collision.gameObject.tag.Equals("DeadArea"))
         {
             isdead = true;
+            GetComponent<AudioSource>().PlayOneShot(die, 1f);
             Time.timeScale=0;//Oyunu Direk donduruyor ///Sahneyi yeniden yüklerken düzeltilmesi gerek(1 yapýlmasý )
             Restart.gameObject.SetActive(true);
             MainMenu.gameObject.SetActive(true);
