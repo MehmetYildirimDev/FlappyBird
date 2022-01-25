@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BirdMov : MonoBehaviour
 {
+    public Button Restart, MainMenu;
     public GameManager ManagerGame;
 
     public bool isdead = false; 
@@ -15,6 +17,8 @@ public class BirdMov : MonoBehaviour
     {
         Rb2D = this.gameObject.GetComponent<Rigidbody2D>();//Bu oyun objesinin rb ulaþ diyoruz;
         Rb2D.gravityScale = 0.2f;
+        Restart.gameObject.SetActive(false);
+        MainMenu.gameObject.SetActive(false);
     }
     private void Update()
     {
@@ -40,6 +44,8 @@ public class BirdMov : MonoBehaviour
         {
             isdead = true;
             Time.timeScale=0;//Oyunu Direk donduruyor ///Sahneyi yeniden yüklerken düzeltilmesi gerek(1 yapýlmasý )
+            Restart.gameObject.SetActive(true);
+            MainMenu.gameObject.SetActive(true);
         }
     }
 }
