@@ -8,7 +8,7 @@ public class BirdMov : MonoBehaviour
 
     public bool isdead = false; 
 
-    public float velocity = 1f;
+    public float velocity = 0.7f;
     private Rigidbody2D Rb2D;
 
     private void Start()

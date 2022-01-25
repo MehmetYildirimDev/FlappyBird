@@ -60,6 +60,7 @@
     <Compile Include="Assets\Scripts\PipeMov.cs" />
     <Compile Include="Assets\Scripts\PipesSpawner.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\SceneMan.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
