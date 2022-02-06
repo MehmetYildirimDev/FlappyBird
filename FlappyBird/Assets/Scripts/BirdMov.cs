@@ -55,5 +55,6 @@ public class BirdMov : MonoBehaviour
             Restart.gameObject.SetActive(true);
             MainMenu.gameObject.SetActive(true);
         }
+        
     }
 }

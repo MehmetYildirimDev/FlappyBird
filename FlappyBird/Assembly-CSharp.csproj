@@ -61,6 +61,7 @@
     <Compile Include="Assets\Scripts\PipesSpawner.cs" />
     <Compile Include="Assets\Scripts\SceneMan.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Additions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
