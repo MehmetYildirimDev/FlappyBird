@@ -62,6 +62,8 @@
     <Compile Include="Assets\Scripts\SceneMan.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Additions.cs" />
+    <Compile Include="Assets\Scripts\AwardBoxSpawner.cs" />
+    <Compile Include="Assets\Scripts\AwardBoxMov.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
