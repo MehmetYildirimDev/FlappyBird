@@ -6,6 +6,9 @@ TagManager:
   tags:
   - DeadArea
   - Ghost
+  - Score
+  - Platform
+  - Score1
   layers:
   - Default
   - TransparentFX

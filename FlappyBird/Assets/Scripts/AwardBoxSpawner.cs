@@ -5,7 +5,7 @@ using UnityEngine;
 public class AwardBoxSpawner : MonoBehaviour
 {
     public BirdMov BirdScript;
-    public GameObject Circle;
+    public GameObject AwardBox;
 
     private void Start()
     {
@@ -16,7 +16,7 @@ public class AwardBoxSpawner : MonoBehaviour
         while (!BirdScript.isdead && !BirdScript.GhostMode)
         {
 
-            Instantiate(Circle, new Vector3(1.5f, Random.Range(-0.4f, 0.4f), 1f), Quaternion.identity);//spawnlýyor
+            Instantiate(AwardBox, new Vector3(1.5f, Random.Range(-0.4f, 0.4f), 1f), Quaternion.identity);//spawnlýyor
             yield return new WaitForSeconds(Random.Range(5f, 15f));//Bir saniye bekle kodunu yazdik ///bekliyor
 
         }

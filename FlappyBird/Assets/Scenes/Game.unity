@@ -217,6 +217,7 @@ RectTransform:
   - {fileID: 249364783}
   - {fileID: 582907966}
   - {fileID: 638138439}
+  - {fileID: 1969081970}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -887,7 +888,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BirdScript: {fileID: 1417981797}
-  Circle: {fileID: 3195555351991998038, guid: 87e825eb3fa58ea40ba17e6280a139a5, type: 3}
+  AwardBox: {fileID: 3195555351991998038, guid: 87e825eb3fa58ea40ba17e6280a139a5, type: 3}
 --- !u!1 &1083287443
 GameObject:
   m_ObjectHideFlags: 0
@@ -1201,8 +1202,11 @@ MonoBehaviour:
   MainMenu: {fileID: 638138440}
   ManagerGame: {fileID: 603109091}
   isdead: 0
-  GhostMode: 0
   velocity: 1.75
+  GhostMode: 0
+  Pipes: {fileID: 3769534597783635250, guid: 10f6e8a6a9cf77746b5d02a3ee7322ac, type: 3}
+  GmCounter: 5
+  CounterText: {fileID: 1969081971}
 --- !u!82 &1417981798
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1313,7 +1317,7 @@ GameObject:
   - component: {fileID: 1920553105}
   m_Layer: 0
   m_Name: Platform
-  m_TagString: DeadArea
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1376,7 +1380,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1920553101}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.701, y: -1.001, z: 0}
   m_LocalScale: {x: 1.73, y: 1, z: 1}
   m_Children: []
@@ -1428,6 +1432,85 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &1969081969
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1969081970}
+  - component: {fileID: 1969081972}
+  - component: {fileID: 1969081971}
+  m_Layer: 5
+  m_Name: GhostMode
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1969081970
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969081969}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 29967662}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.1344318, y: -0.008415014}
+  m_AnchorMax: {x: 0.88052475, y: 0.18568736}
+  m_AnchoredPosition: {x: -0.5300293, y: -0.6999512}
+  m_SizeDelta: {x: 1.6975098, y: -0.9428711}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1969081971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969081969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 57a74e73b27276f48abaae9d4715aca8, type: 3}
+    m_FontSize: 0
+    m_FontStyle: 1
+    m_BestFit: 1
+    m_MinSize: 0
+    m_MaxSize: 300
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "Kalan S\xFCre"
+--- !u!222 &1969081972
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969081969}
+  m_CullTransparentMesh: 1
 --- !u!1 &2065193626
 GameObject:
   m_ObjectHideFlags: 0

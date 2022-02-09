@@ -11,12 +11,21 @@ public class PipesSpawner : MonoBehaviour
     {
         StartCoroutine(SpawnObcejt());
     }
+   
     public IEnumerator SpawnObcejt()//Spawnlama iþlemi
     {
-        while (!BirdScript.isdead)
+        while (!BirdScript.isdead && !BirdScript.GhostMode)
         {
+            Debug.Log("Spawnernon");
             Instantiate(Pipes, new Vector3(1.5f, Random.Range(-0.4f, 0.4f), 1f), Quaternion.identity);//spawnlýyor
-            yield return new WaitForSeconds(2f);//Bir saniye bekle kodunu yazdik ///bekliyor
+            yield return new WaitForSeconds(2f);//Belirli bir saniye bekle kodunu yazdik ///bekliyor
+        }
+        while (!BirdScript.isdead && BirdScript.GhostMode)
+        {
+            
+            Debug.Log("SpawnerGhost");
+            Instantiate(Pipes, new Vector3(1.5f, Random.Range(-0.4f, 0.4f), 1f), Quaternion.identity);//spawnlýyor
+            yield return new WaitForSeconds(1f);//Belirli bir saniye bekle kodunu yazdik ///bekliyor
         }
 
     }       
