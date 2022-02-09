@@ -13,11 +13,11 @@ public class AwardBoxSpawner : MonoBehaviour
     }
     public IEnumerator SpawnCircle()//Spawnlama iþlemi
     {
-        while (!BirdScript.isdead && !BirdScript.GhostMode)
+        while (!BirdScript.isdead )
         {
 
-            Instantiate(AwardBox, new Vector3(1.5f, Random.Range(-0.4f, 0.4f), 1f), Quaternion.identity);//spawnlýyor
-            yield return new WaitForSeconds(Random.Range(10f, 20f));//Bir saniye bekle kodunu yazdik ///bekliyor
+            Instantiate(AwardBox, new Vector3(1.5f, Random.Range(-0.4f, 0.4f), 1f), Quaternion.identity);
+            yield return new WaitForSeconds(Random.Range(6f, 20f));
 
         }
 

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,13 +6,19 @@ public class BirdMov : MonoBehaviour
     public Sprite[] BirdSprites;
     //     GetComponent<SpriteRenderer>().sprite = BirdSprites[0];//Bird
     //     GetComponent<SpriteRenderer>().sprite = BirdSprites[1];//Ghost
-    public AudioClip point, die, jump;
+    
+    [Header("Audio Clip List")]
+    public AudioClip point;
+    public AudioClip  die;
+    public AudioClip jump;
 
-    public Button Restart, MainMenu;
+    [Header("Buttons")]
+    public Button Restart;
+    public Button MainMenu;
+
+    [Header("Game Manager")]
     public GameManager ManagerGame;
-
     public bool isdead = false;
-
     public float velocity = 1.75f;
     private Rigidbody2D Rb2D;
 
@@ -22,16 +26,17 @@ public class BirdMov : MonoBehaviour
     public bool GhostMode = false;
     public GameObject Pipes;
     private GameObject[] Dead;
-    public float GmCounter=5f;
+    public float GmCounter = 5f;
     public Text CounterText;
+    private PipesSpawner PipesSpawnerScript;
 
 
 
     private void Start()
     {
-        DefultModeF();
+        DefultModeF();//Oyun defult modda basliyor
 
-        Rb2D = this.gameObject.GetComponent<Rigidbody2D>();//Bu oyun objesinin rb ulaþ diyoruz;
+        Rb2D = this.gameObject.GetComponent<Rigidbody2D>();//Bu oyun objesinin rb ulas diyoruz;
         Rb2D.gravityScale = 0.2f;
 
     }
@@ -39,7 +44,7 @@ public class BirdMov : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            //Kuþu Sýçrat
+            //Kuþu Sýcrat
             if (Rb2D.gravityScale != 1)
             {
                 Rb2D.gravityScale = 1;
@@ -49,24 +54,27 @@ public class BirdMov : MonoBehaviour
         }
 
 
-        if (GhostMode)
+        if (GhostMode == true)//
         {
 
-            Dead = GameObject.FindGameObjectsWithTag("DeadArea");//DeadArea tagli objeleri dead dizisine attým  
+            Dead = GameObject.FindGameObjectsWithTag("DeadArea");//DeadArea tagli objeleri dead dizisine attim  
             foreach (GameObject gameObject in Dead)
             {
-                gameObject.tag = "Score1";//tüm objelerin tagý score1(tekrar dönderebilelim diye) yaptýk 
+                gameObject.tag = "Score1";//tüm objelerin tagý score1(tekrar dönderebilelim diye) yaptim 
                 gameObject.GetComponent<Collider2D>().isTrigger = true;
             }
-            GmCounter -= Time.deltaTime;
+            GmCounter -= Time.deltaTime;//Sayac zamanla azaliyor
             CounterText.text = GmCounter.ToString("0.0");
-            if (GmCounter<0)
+            if (GmCounter < 0)
             {
-                DefultModeF();
-            }
-            //Pipes.GetComponent<PipeMov>().Speed = 2f;
+                DefultModeF();//Sayac 0 altýna dustugunde defult moda geciliyor
+                GmCounter = 5f;
+            }          
         }
     }
+
+    
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag.Equals("DeadArea") || collision.gameObject.tag.Equals("Platform") && !GhostMode)//Ghost modda ölmemesinin sebebi buraya giremiyor
@@ -74,10 +82,11 @@ public class BirdMov : MonoBehaviour
             DeadScene();
         }
 
-        if (collision.gameObject.tag.Equals("Platform"))
+        if (collision.gameObject.tag.Equals("Platform"))//Platform her iki modda da oyunu bitiriyor
         {
             DeadScene();
         }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -90,46 +99,53 @@ public class BirdMov : MonoBehaviour
         if (collision.gameObject.tag.Equals("Ghost"))
         {
             GhostModeF();
+            Debug.Log("trigerr");
+            Destroy(collision.gameObject);
+            
         }
     }
 
 
+    
 
-    private void GhostModeF()
+    public void GhostModeF()
     {
         GhostMode = true;
 
         GetComponent<Animator>().enabled = false;//animasyon durdu 
-        GetComponent<SpriteRenderer>().sprite = BirdSprites[1];//Ghost
+        GetComponent<SpriteRenderer>().sprite = BirdSprites[1];//Ghost gorunume gecildi
         Pipes.GetComponent<PipeMov>().Speed = 2f;
         CounterText.gameObject.SetActive(true);
-       
+
     }
-    private void DefultModeF()
+    public void DefultModeF()
     {
         GhostMode = false;
-        
+
         GetComponent<Animator>().enabled = true;//animasyon baþladý 
         GetComponent<SpriteRenderer>().sprite = BirdSprites[0];//Bird
         Pipes.GetComponent<PipeMov>().Speed = .5f;
         CounterText.gameObject.SetActive(false);
 
-        Dead = GameObject.FindGameObjectsWithTag("Score1");//DeadArea tagli objeleri dead dizisine attým  
+        Dead = GameObject.FindGameObjectsWithTag("Score1");
         foreach (GameObject gameObject in Dead)
         {
             gameObject.tag = "DeadArea";//tüm objelerin tagý score1(tekrar dönderebilelim diye) yaptýk 
             gameObject.GetComponent<Collider2D>().isTrigger = false;
         }
+
     }
+
     private void DeadScene()
     {
         Pipes.GetComponent<PipeMov>().Speed = .5f;
         isdead = true;
         GetComponent<AudioSource>().PlayOneShot(die, 1f);
-        Time.timeScale = 0;//Oyunu Direk donduruyor ///Sahneyi yeniden yüklerken düzeltilmesi gerek(1 yapýlmasý )
+        Time.timeScale = 0;
         Restart.gameObject.SetActive(true);
         MainMenu.gameObject.SetActive(true);
-
     }
+
+    
 
 }

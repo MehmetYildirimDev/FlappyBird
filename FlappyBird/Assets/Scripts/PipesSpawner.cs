@@ -4,29 +4,22 @@ using UnityEngine;
 
 public class PipesSpawner : MonoBehaviour
 {
-    public BirdMov BirdScript;
     public GameObject Pipes;
+    public float SpawnTime=0f, SpawnAgain=2f;
+
+    public BirdMov BirdScript;
 
     private void Start()
     {
-        StartCoroutine(SpawnObcejt());
+        InvokeRepeating("Spawn", SpawnTime, SpawnAgain);
     }
-   
-    public IEnumerator SpawnObcejt()//Spawnlama iþlemi
-    {
-        while (!BirdScript.isdead && !BirdScript.GhostMode)
+    public void Spawn() {
+        Instantiate(Pipes, new Vector3(1.5f, Random.Range(-0.4f, 0.4f), 1f), Quaternion.identity);//spawnlýyor
+        if (BirdScript.isdead)
         {
-            Debug.Log("Spawnernon");
-            Instantiate(Pipes, new Vector3(1.5f, Random.Range(-0.4f, 0.4f), 1f), Quaternion.identity);//spawnlýyor
-            yield return new WaitForSeconds(2f);//Belirli bir saniye bekle kodunu yazdik ///bekliyor
+            CancelInvoke("Spawn");
         }
-        while (!BirdScript.isdead && BirdScript.GhostMode)
-        {
-            
-            Debug.Log("SpawnerGhost");
-            Instantiate(Pipes, new Vector3(1.5f, Random.Range(-0.4f, 0.4f), 1f), Quaternion.identity);//spawnlýyor
-            yield return new WaitForSeconds(1f);//Belirli bir saniye bekle kodunu yazdik ///bekliyor
-        }
+    }
 
-    }       
 }
+
