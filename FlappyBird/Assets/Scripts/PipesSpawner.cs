@@ -5,7 +5,7 @@ using UnityEngine;
 public class PipesSpawner : MonoBehaviour
 {
     public GameObject Pipes;
-    public float SpawnTime=0f, SpawnAgain=2f;
+    public float SpawnTime=0f, SpawnAgain=1.25f;
 
     public BirdMov BirdScript;
 

@@ -19,7 +19,7 @@ public class BirdMov : MonoBehaviour
     [Header("Game Manager")]
     public GameManager ManagerGame;
     public bool isdead = false;
-    public float velocity = 1.75f;
+    public float velocity = 2f;//eski->1.75f
     private Rigidbody2D Rb2D;
 
     [Header("Ghost Mode")]
@@ -29,6 +29,7 @@ public class BirdMov : MonoBehaviour
     public float GmCounter = 5f;
     public Text CounterText;
     private PipesSpawner PipesSpawnerScript;
+    public float PipeMovSpeed = .75f;
 
 
 
@@ -114,7 +115,7 @@ public class BirdMov : MonoBehaviour
 
         GetComponent<Animator>().enabled = false;//animasyon durdu 
         GetComponent<SpriteRenderer>().sprite = BirdSprites[1];//Ghost gorunume gecildi
-        Pipes.GetComponent<PipeMov>().Speed = 2f;
+        Pipes.GetComponent<PipeMov>().Speed = 2f*PipeMovSpeed;
         CounterText.gameObject.SetActive(true);
 
     }
@@ -124,7 +125,7 @@ public class BirdMov : MonoBehaviour
 
         GetComponent<Animator>().enabled = true;//animasyon baþladý 
         GetComponent<SpriteRenderer>().sprite = BirdSprites[0];//Bird
-        Pipes.GetComponent<PipeMov>().Speed = .5f;
+        Pipes.GetComponent<PipeMov>().Speed = PipeMovSpeed;///
         CounterText.gameObject.SetActive(false);
 
         Dead = GameObject.FindGameObjectsWithTag("Score1");
@@ -138,7 +139,7 @@ public class BirdMov : MonoBehaviour
 
     private void DeadScene()
     {
-        Pipes.GetComponent<PipeMov>().Speed = .5f;
+        Pipes.GetComponent<PipeMov>().Speed = PipeMovSpeed;///
         isdead = true;
         GetComponent<AudioSource>().PlayOneShot(die, 1f);
         Time.timeScale = 0;
