@@ -19,7 +19,7 @@ public class BirdMov : MonoBehaviour
     [Header("Game Manager")]
     public GameManager ManagerGame;
     public bool isdead = false;
-    public float velocity = 2f;//eski->1.75f
+    public float velocity = 1.9f;
     private Rigidbody2D Rb2D;
 
     [Header("Ghost Mode")]
@@ -29,7 +29,7 @@ public class BirdMov : MonoBehaviour
     public float GmCounter = 5f;
     public Text CounterText;
     private PipesSpawner PipesSpawnerScript;
-    public float PipeMovSpeed = .75f;
+    public float PipeMovSpeed = .7f;
 
 
 
@@ -65,7 +65,7 @@ public class BirdMov : MonoBehaviour
                 gameObject.GetComponent<Collider2D>().isTrigger = true;
             }
             GmCounter -= Time.deltaTime;//Sayac zamanla azaliyor
-            CounterText.text = GmCounter.ToString("0.0");
+            CounterText.text = GmCounter.ToString("0");
             if (GmCounter < 0)
             {
                 DefultModeF();//Sayac 0 altýna dustugunde defult moda geciliyor
