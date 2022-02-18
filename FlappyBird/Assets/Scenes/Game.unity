@@ -840,6 +840,7 @@ GameObject:
   - component: {fileID: 732916037}
   - component: {fileID: 732916036}
   - component: {fileID: 732916038}
+  - component: {fileID: 732916039}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -862,6 +863,7 @@ MonoBehaviour:
   Pipes: {fileID: 3769534597783635250, guid: 10f6e8a6a9cf77746b5d02a3ee7322ac, type: 3}
   SpawnTime: 0
   SpawnAgain: 2
+  StopTime: 3
   BirdScript: {fileID: 1417981797}
 --- !u!4 &732916037
 Transform:
@@ -871,7 +873,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 732916035}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: 1.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -893,6 +895,27 @@ MonoBehaviour:
   SpawnTime: 10
   SpawnAgain: 15
   BirdScript: {fileID: 1417981797}
+--- !u!50 &732916039
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732916035}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1083287443
 GameObject:
   m_ObjectHideFlags: 0
@@ -1211,6 +1234,7 @@ MonoBehaviour:
   Pipes: {fileID: 3769534597783635250, guid: 10f6e8a6a9cf77746b5d02a3ee7322ac, type: 3}
   GmCounter: 5
   CounterText: {fileID: 1969081971}
+  PipesSpawnerScript: {fileID: 0}
   PipeMovSpeed: 0.7
 --- !u!82 &1417981798
 AudioSource:

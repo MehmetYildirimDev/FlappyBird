@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneMan : MonoBehaviour
 {
-    //kuþ ölü olabilir dikkat et hata çýkarsa
+    
   public void GameSceneTransition()
     {
         Time.timeScale = 1;

@@ -28,16 +28,16 @@ public class BirdMov : MonoBehaviour
     private GameObject[] Dead;
     public float GmCounter = 5f;
     public Text CounterText;
-    private PipesSpawner PipesSpawnerScript;
+    public PipesSpawner PipesSpawnerScript;
     public float PipeMovSpeed = .7f;
 
 
 
     private void Start()
     {
-        DefultModeF();//Oyun defult modda basliyor
+        DefultModeF();
 
-        Rb2D = this.gameObject.GetComponent<Rigidbody2D>();//Bu oyun objesinin rb ulas diyoruz;
+        Rb2D = this.gameObject.GetComponent<Rigidbody2D>();
         Rb2D.gravityScale = 0.2f;
 
     }
@@ -45,9 +45,10 @@ public class BirdMov : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            //Kuþu Sýcrat
+           
             if (Rb2D.gravityScale != 1)
             {
+               
                 Rb2D.gravityScale = 1;
             }
             GetComponent<AudioSource>().PlayOneShot(jump, 1f);
@@ -68,6 +69,7 @@ public class BirdMov : MonoBehaviour
             CounterText.text = GmCounter.ToString("0");
             if (GmCounter < 0)
             {
+
                 DefultModeF();//Sayac 0 altýna dustugunde defult moda geciliyor
                 GmCounter = 5f;
             }          
@@ -100,7 +102,7 @@ public class BirdMov : MonoBehaviour
         if (collision.gameObject.tag.Equals("Ghost"))
         {
             GhostModeF();
-            Debug.Log("trigerr");
+     
             Destroy(collision.gameObject);
             
         }
@@ -115,7 +117,7 @@ public class BirdMov : MonoBehaviour
 
         GetComponent<Animator>().enabled = false;//animasyon durdu 
         GetComponent<SpriteRenderer>().sprite = BirdSprites[1];//Ghost gorunume gecildi
-        Pipes.GetComponent<PipeMov>().Speed = 2f*PipeMovSpeed;
+//        Pipes.GetComponent<PipeMov>().Speed = 2f*PipeMovSpeed;
         CounterText.gameObject.SetActive(true);
 
     }

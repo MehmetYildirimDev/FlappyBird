@@ -9,7 +9,7 @@ public class PipeMov : MonoBehaviour
 
     private void Start()
     {
-        Destroy(this.gameObject, 5);
+        Destroy(this.gameObject, 10);
     }
 
 

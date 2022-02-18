@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class AwardBoxMov : MonoBehaviour
 {
-    public float Speed = 1f;
+    private float Speed = 1f;
 
     private void Start()
     {
-        Destroy(this.gameObject, 5);
+        Destroy(this.gameObject, 10);
     }
 
 
